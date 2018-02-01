@@ -14,6 +14,9 @@
 		BB4FBC44201F61B9007CE926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB4FBC43201F61B9007CE926 /* Assets.xcassets */; };
 		BB4FBC47201F61B9007CE926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB4FBC45201F61B9007CE926 /* LaunchScreen.storyboard */; };
 		BB682B372020980600BB7F62 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB682B362020980600BB7F62 /* APIController.swift */; };
+		BBFB1B1920230D44007FF5F0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFB1B1820230D44007FF5F0 /* ProfileViewController.swift */; };
+		BBFB1B1B20231FC5007FF5F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFB1B1A20231FC5007FF5F0 /* TabBarViewController.swift */; };
+		BBFB1B1D20233639007FF5F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFB1B1C20233639007FF5F0 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		BB4FBC46201F61B9007CE926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB4FBC48201F61B9007CE926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB682B362020980600BB7F62 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		BBFB1B1820230D44007FF5F0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BBFB1B1A20231FC5007FF5F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		BBFB1B1C20233639007FF5F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB51011D25A55B0AFE10D4C0 /* Pods-SwiftyCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyCompanion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyCompanion/Pods-SwiftyCompanion.debug.xcconfig"; sourceTree = "<group>"; };
 		E8B596B0A36087AA29007705 /* Pods-SwiftyCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyCompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyCompanion/Pods-SwiftyCompanion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,8 +87,11 @@
 			isa = PBXGroup;
 			children = (
 				BB4FBC3C201F61B9007CE926 /* AppDelegate.swift */,
-				BB4FBC3E201F61B9007CE926 /* ViewController.swift */,
 				BB682B362020980600BB7F62 /* APIController.swift */,
+				BB4FBC3E201F61B9007CE926 /* ViewController.swift */,
+				BBFB1B1A20231FC5007FF5F0 /* TabBarViewController.swift */,
+				BBFB1B1820230D44007FF5F0 /* ProfileViewController.swift */,
+				BBFB1B1C20233639007FF5F0 /* User.swift */,
 				BB4FBC40201F61B9007CE926 /* Main.storyboard */,
 				BB4FBC43201F61B9007CE926 /* Assets.xcassets */,
 				BB4FBC45201F61B9007CE926 /* LaunchScreen.storyboard */,
@@ -226,6 +235,9 @@
 			files = (
 				BB4FBC3F201F61B9007CE926 /* ViewController.swift in Sources */,
 				BB4FBC3D201F61B9007CE926 /* AppDelegate.swift in Sources */,
+				BBFB1B1D20233639007FF5F0 /* User.swift in Sources */,
+				BBFB1B1920230D44007FF5F0 /* ProfileViewController.swift in Sources */,
+				BBFB1B1B20231FC5007FF5F0 /* TabBarViewController.swift in Sources */,
 				BB682B372020980600BB7F62 /* APIController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,17 +10,27 @@ import UIKit
 import SearchTextField
 import SwiftyJSON
 
+var apiController: APIController = APIController()
+enum COALITION: Int
+{
+    case FEDERATION = 1
+    case ALLIANCE = 2
+    case ASSEMBLY = 3
+    case ORDER = 4
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var searchTextField: SearchTextField!
+    @IBOutlet weak var searchButton: UIButton!
     
-    var apiController: APIController = APIController()
+//    var selectedUser: JSON?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchTextField.isEnabled = false
-        
+                
         apiController.getAccessToken { (err) in
             if let e = err {
                 print(e)
@@ -28,6 +38,7 @@ class ViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 self.searchTextField.isEnabled = true
+                print(apiController.accessToken)
             }
         }
         
@@ -38,10 +49,6 @@ class ViewController: UIViewController {
         searchTextField.comparisonOptions = [.caseInsensitive]
         searchTextField.maxNumberOfResults = 5
         searchTextField.maxResultsListHeight = 160
-        searchTextField.itemSelectionHandler = { item, itemPosition in
-            // CODE REQUETE HERE
-        }
-//        searchTextField.filterStrings(["coucou", "lol", "mdr"])
         
         let backgroundImage = UIImageView(image: UIImage(named: "background_42"))
         self.view.addSubview(backgroundImage)
@@ -72,7 +79,35 @@ class ViewController: UIViewController {
             }
         }
     }
+
+//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+//        if identifier == "loginToProfile"
+//        {
+//            guard let login = self.searchTextField.text else { return false }
+//            apiController.getUserByName(login: login, completionHandler: { (jsonOpt) in
+//                guard let json = jsonOpt else { return }
+//                self.selectedUser = json
+//            })
+//            if self.selectedUser == nil
+//            {
+//                let alert = UIAlertController(title: "Error", message: "User not found", preferredStyle: .alert)
+//                let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alert.addAction(dismissAction)
+//                self.present(alert, animated: true, completion: nil)
+//                return false
+//            }
+//        }
+//        return true
+//    }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "loginToProfile"
+        {
+            guard let login = self.searchTextField.text else { return }
+            let tabBarVC = segue.destination as! TabBarViewController
+            tabBarVC.selectedUser = login
+        }
+    }
 }
 

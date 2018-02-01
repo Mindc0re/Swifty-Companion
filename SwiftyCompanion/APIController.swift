@@ -41,7 +41,7 @@ class APIController
                             completionHandler(nil)
                         }
                         else {
-                            completionHandler("bruh" as? Error)
+                            completionHandler("Error JSON Access_Token" as? Error)
                         }
                     }
                     catch(let e) { completionHandler(e) }
@@ -63,27 +63,73 @@ class APIController
         request.setValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let err = error {
-                print("\n1 - \(err)\n")
-                completionHandler(nil)
-            }
+            if error != nil { completionHandler(nil) }
             else if let _ = response {
                 if let d = data {
                     do {
                         let json = try JSON(data: d)
                         completionHandler(json)
                     }
-                    catch (let e) {
-                        print("\n2 - \(e)\n")
-                        completionHandler(nil)
-                    }
+                    catch (_) { completionHandler(nil) }
                 }
+                else { completionHandler(nil) }
             }
-            else {
-                print("\n3 - ERROR\n")
-                completionHandler(nil)
-            }
+            else { completionHandler(nil) }
         }
+        task.resume()
+    }
+    
+    func getUserByName(login: String, completionHandler: @escaping(JSON?) -> Void)
+    {
+        guard let formattedLogin = login.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { completionHandler(nil); return }
+        let urlStr = URL(string: "https://api.intra.42.fr/v2/users/\(formattedLogin)")
+        guard let url = urlStr else { completionHandler(nil); return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil { completionHandler(nil) }
+            else if response != nil {
+                if let d = data {
+                    do {
+                        let json = try JSON(data: d)
+                        completionHandler(json)
+                    }
+                    catch(_) { completionHandler(nil) }
+                }
+                else { completionHandler(nil) }
+            }
+            else { completionHandler(nil) }
+        }
+        
+        task.resume()
+    }
+    
+    func getCoalition(login: String, completionHandler: @escaping(COALITION?) -> Void)
+    {
+        guard let formattedLogin = login.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { completionHandler(nil); return }
+        let urlStr = URL(string: "https://api.intra.42.fr/v2/users/\(formattedLogin)/coalitions")
+        guard let url = urlStr else { completionHandler(nil); return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(self.accessToken!)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil { completionHandler(nil) }
+            else if response != nil {
+                if let d = data {
+                    do {
+                        let json = try JSON(data: d)
+                        completionHandler(COALITION(rawValue: json[0]["id"].intValue))
+                    }
+                    catch(_) { completionHandler(nil) }
+                }
+                else { completionHandler(nil) }
+            }
+            else { completionHandler(nil) }
+        }
+        
         task.resume()
     }
     
