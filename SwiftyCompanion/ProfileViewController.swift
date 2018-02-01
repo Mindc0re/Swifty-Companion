@@ -79,7 +79,6 @@ class ProfileViewController: UIViewController {
         if let coa = parent.user?.coalition {
             backgroundImage = UIImageView(image: UIImage(named: "\(coa)"))
         }
-        
         self.view.addSubview(backgroundImage)
         self.view.sendSubview(toBack: backgroundImage)
     }
@@ -95,8 +94,8 @@ class ProfileViewController: UIViewController {
                 if let d = data {
                     DispatchQueue.main.async {
                         self.userImg.image = UIImage(data: d)
-//                        self.userImg.layer.cornerRadius = self.userImg.frame.size.width / 2
-//                        self.userImg.clipsToBounds = true
+                        self.userImg.layer.cornerRadius = self.userImg.frame.size.width / 2
+                        self.userImg.clipsToBounds = true
                     }
                 }
                 else { print("Image error"); return }

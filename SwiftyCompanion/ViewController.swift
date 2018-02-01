@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchTextField: SearchTextField!
     @IBOutlet weak var searchButton: UIButton!
     
-//    var selectedUser: JSON?
+    //    var selectedUser: JSON?
     
     override func viewDidLoad() {
         super.viewDidLoad()
