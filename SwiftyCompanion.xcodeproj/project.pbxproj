@@ -9,29 +9,33 @@
 /* Begin PBXBuildFile section */
 		07CC24FC3CDB36E19A11FE85 /* Pods_SwiftyCompanion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4468D437A6358AEE63B508 /* Pods_SwiftyCompanion.framework */; };
 		BB4FBC3D201F61B9007CE926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4FBC3C201F61B9007CE926 /* AppDelegate.swift */; };
-		BB4FBC3F201F61B9007CE926 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4FBC3E201F61B9007CE926 /* ViewController.swift */; };
 		BB4FBC42201F61B9007CE926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB4FBC40201F61B9007CE926 /* Main.storyboard */; };
 		BB4FBC44201F61B9007CE926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB4FBC43201F61B9007CE926 /* Assets.xcassets */; };
 		BB4FBC47201F61B9007CE926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB4FBC45201F61B9007CE926 /* LaunchScreen.storyboard */; };
 		BB682B372020980600BB7F62 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB682B362020980600BB7F62 /* APIController.swift */; };
+		BBA3198C2023A7D40086FAED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3198B2023A7D40086FAED /* ViewController.swift */; };
+		BBA3198E2023AA3E0086FAED /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3198D2023AA3E0086FAED /* SkillsViewController.swift */; };
+		BBA319902023B8C30086FAED /* SkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3198F2023B8C30086FAED /* SkillTableViewCell.swift */; };
 		BBFB1B1920230D44007FF5F0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFB1B1820230D44007FF5F0 /* ProfileViewController.swift */; };
 		BBFB1B1B20231FC5007FF5F0 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFB1B1A20231FC5007FF5F0 /* TabBarViewController.swift */; };
-		BBFB1B1D20233639007FF5F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFB1B1C20233639007FF5F0 /* User.swift */; };
+		BBFB1B1D20233639007FF5F0 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFB1B1C20233639007FF5F0 /* Structs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2B4468D437A6358AEE63B508 /* Pods_SwiftyCompanion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyCompanion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4FBC39201F61B9007CE926 /* SwiftyCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4FBC3C201F61B9007CE926 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BB4FBC3E201F61B9007CE926 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BB4FBC41201F61B9007CE926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB4FBC43201F61B9007CE926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB4FBC46201F61B9007CE926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB4FBC48201F61B9007CE926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB682B362020980600BB7F62 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		BBA3198B2023A7D40086FAED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BBA3198D2023AA3E0086FAED /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
+		BBA3198F2023B8C30086FAED /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		BBFB1B1820230D44007FF5F0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BBFB1B1A20231FC5007FF5F0 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		BBFB1B1C20233639007FF5F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BBFB1B1C20233639007FF5F0 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		DB51011D25A55B0AFE10D4C0 /* Pods-SwiftyCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyCompanion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyCompanion/Pods-SwiftyCompanion.debug.xcconfig"; sourceTree = "<group>"; };
 		E8B596B0A36087AA29007705 /* Pods-SwiftyCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyCompanion.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyCompanion/Pods-SwiftyCompanion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,10 +92,12 @@
 			children = (
 				BB4FBC3C201F61B9007CE926 /* AppDelegate.swift */,
 				BB682B362020980600BB7F62 /* APIController.swift */,
-				BB4FBC3E201F61B9007CE926 /* ViewController.swift */,
+				BBA3198B2023A7D40086FAED /* ViewController.swift */,
 				BBFB1B1A20231FC5007FF5F0 /* TabBarViewController.swift */,
 				BBFB1B1820230D44007FF5F0 /* ProfileViewController.swift */,
-				BBFB1B1C20233639007FF5F0 /* User.swift */,
+				BBA3198D2023AA3E0086FAED /* SkillsViewController.swift */,
+				BBA3198F2023B8C30086FAED /* SkillTableViewCell.swift */,
+				BBFB1B1C20233639007FF5F0 /* Structs.swift */,
 				BB4FBC40201F61B9007CE926 /* Main.storyboard */,
 				BB4FBC43201F61B9007CE926 /* Assets.xcassets */,
 				BB4FBC45201F61B9007CE926 /* LaunchScreen.storyboard */,
@@ -233,10 +239,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB4FBC3F201F61B9007CE926 /* ViewController.swift in Sources */,
+				BBA3198C2023A7D40086FAED /* ViewController.swift in Sources */,
 				BB4FBC3D201F61B9007CE926 /* AppDelegate.swift in Sources */,
-				BBFB1B1D20233639007FF5F0 /* User.swift in Sources */,
+				BBFB1B1D20233639007FF5F0 /* Structs.swift in Sources */,
 				BBFB1B1920230D44007FF5F0 /* ProfileViewController.swift in Sources */,
+				BBA3198E2023AA3E0086FAED /* SkillsViewController.swift in Sources */,
+				BBA319902023B8C30086FAED /* SkillTableViewCell.swift in Sources */,
 				BBFB1B1B20231FC5007FF5F0 /* TabBarViewController.swift in Sources */,
 				BB682B372020980600BB7F62 /* APIController.swift in Sources */,
 			);

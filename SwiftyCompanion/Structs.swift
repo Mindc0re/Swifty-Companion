@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 struct User
 {
@@ -16,5 +17,17 @@ struct User
     var img_url: String
     var level: Float
     var location: String
-    var coalition: COALITION
+    var coalition: COALITION?
 }
+
+struct Skill
+{
+    var title: String
+    var level: Float
+
+    init(json: JSON) {
+        self.title = json["name"].stringValue
+        self.level = json["level"].floatValue
+    }
+}
+

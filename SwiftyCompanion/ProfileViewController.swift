@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController {
         }
         apiController.getUserByName(login: user) { (jsonObj) in
             if let json = jsonObj {
+                parent.userJson = json
                 self.setupUser(json: json)
             }
         }
@@ -57,6 +58,9 @@ class ProfileViewController: UIViewController {
             if let coa = coalition {
                 parent.user = User(displayName: json["displayname"].stringValue, phone: json["phone"].stringValue, img_url: json["image_url"].stringValue, level: json["cursus_users"][0]["level"].floatValue, location: json["location"].stringValue, coalition: coa)
             }
+            else {
+                parent.user = User(displayName: json["displayname"].stringValue, phone: json["phone"].stringValue, img_url: json["image_url"].stringValue, level: json["cursus_users"][0]["level"].floatValue, location: json["location"].stringValue, coalition: nil)
+            }
             DispatchQueue.main.async {
                 self.setupView()
             }
@@ -74,10 +78,11 @@ class ProfileViewController: UIViewController {
         guard let lvl = parent.user?.level else { return }
         self.level.text = String(format: "%.2f", lvl)
         
-        var backgroundImage = UIImageView(image: UIImage(named: "background_42"))
-        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background_42")
+        backgroundImage.contentMode = .scaleAspectFill
         if let coa = parent.user?.coalition {
-            backgroundImage = UIImageView(image: UIImage(named: "\(coa)"))
+            backgroundImage.image = UIImage(named: "\(coa)")
         }
         self.view.addSubview(backgroundImage)
         self.view.sendSubview(toBack: backgroundImage)

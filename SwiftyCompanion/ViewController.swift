@@ -5,7 +5,6 @@
 //  Created by Simon GAUDIN on 1/29/18.
 //  Copyright © 2018 Simon GAUDIN. All rights reserved.
 //
-
 import UIKit
 import SearchTextField
 import SwiftyJSON
@@ -20,17 +19,15 @@ enum COALITION: Int
 }
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var searchTextField: SearchTextField!
     @IBOutlet weak var searchButton: UIButton!
-    
-    //    var selectedUser: JSON?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchTextField.isEnabled = false
-                
+        
         apiController.getAccessToken { (err) in
             if let e = err {
                 print(e)
@@ -38,7 +35,7 @@ class ViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 self.searchTextField.isEnabled = true
-                print(apiController.accessToken)
+                print(apiController.accessToken!)
             }
         }
         
@@ -50,11 +47,13 @@ class ViewController: UIViewController {
         searchTextField.maxNumberOfResults = 5
         searchTextField.maxResultsListHeight = 160
         
-        let backgroundImage = UIImageView(image: UIImage(named: "background_42"))
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background_42")
+        backgroundImage.contentMode = .scaleAspectFill
         self.view.addSubview(backgroundImage)
         self.view.sendSubview(toBack: backgroundImage)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -79,26 +78,6 @@ class ViewController: UIViewController {
             }
         }
     }
-
-//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-//        if identifier == "loginToProfile"
-//        {
-//            guard let login = self.searchTextField.text else { return false }
-//            apiController.getUserByName(login: login, completionHandler: { (jsonOpt) in
-//                guard let json = jsonOpt else { return }
-//                self.selectedUser = json
-//            })
-//            if self.selectedUser == nil
-//            {
-//                let alert = UIAlertController(title: "Error", message: "User not found", preferredStyle: .alert)
-//                let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//                alert.addAction(dismissAction)
-//                self.present(alert, animated: true, completion: nil)
-//                return false
-//            }
-//        }
-//        return true
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -110,4 +89,3 @@ class ViewController: UIViewController {
         }
     }
 }
-

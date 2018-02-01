@@ -12,6 +12,7 @@ import SwiftyJSON
 class TabBarViewController: UITabBarController {
 
     var selectedUser: String?
+    var userJson: JSON?
     var user: User?
     
     override func viewDidLoad() {
