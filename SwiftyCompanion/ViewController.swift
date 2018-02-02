@@ -10,13 +10,6 @@ import SearchTextField
 import SwiftyJSON
 
 var apiController: APIController = APIController()
-enum COALITION: Int
-{
-    case FEDERATION = 1
-    case ALLIANCE = 2
-    case ASSEMBLY = 3
-    case ORDER = 4
-}
 
 class ViewController: UIViewController {
     
@@ -28,14 +21,16 @@ class ViewController: UIViewController {
         
         searchTextField.isEnabled = false
         
-        apiController.getAccessToken { (err) in
-            if let e = err {
-                print(e)
-                return
-            }
-            DispatchQueue.main.async {
-                self.searchTextField.isEnabled = true
-                print(apiController.accessToken!)
+        if apiController.accessToken == nil
+        {
+            apiController.getAccessToken { (err) in
+                if let e = err {
+                    print(e)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.searchTextField.isEnabled = true
+                }
             }
         }
         

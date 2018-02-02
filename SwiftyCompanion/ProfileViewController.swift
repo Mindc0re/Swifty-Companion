@@ -16,6 +16,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var level: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak var levelProgress: UIProgressView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         self.parent?.title = "Profile"
@@ -23,7 +25,17 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background_42")
+        backgroundImage.contentMode = .scaleAspectFill
+        self.view.addSubview(backgroundImage)
+        self.view.sendSubview(toBack: backgroundImage)
+        
         let parent = self.parent as! TabBarViewController
+        
+        deactivateInterface(true)
+        self.activityIndicator.startAnimating()
         
         guard let user = parent.selectedUser else { showAlert(); return }
         if user.isEmpty {
@@ -32,8 +44,25 @@ class ProfileViewController: UIViewController {
         }
         apiController.getUserByName(login: user) { (jsonObj) in
             if let json = jsonObj {
+                if json.isEmpty {
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
+                    }
+                    self.showAlert()
+                    return
+                }
                 parent.userJson = json
                 self.setupUser(json: json)
+                self.deactivateInterface(false)
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    backgroundImage.isHidden = true
+                }
+            }
+            else {
+                self.showAlert();
             }
         }
     }
@@ -42,12 +71,34 @@ class ProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDevice.current.orientation.isLandscape {
+            self.userImg.layer.cornerRadius = 50
+        }
+        else {
+            self.userImg.layer.cornerRadius = 62.5
+        }
+    }
+    
+    func deactivateInterface(_ disabled: Bool)
+    {
+        DispatchQueue.main.async {
+            self.userImg.isHidden = disabled
+            self.displayName.isHidden = disabled
+            self.location.isHidden = disabled
+            self.level.isHidden = disabled
+            self.phoneNumber.isHidden = disabled
+            self.levelProgress.isHidden = disabled
+        }
+    }
+    
     func showAlert()
     {
         let alert = UIAlertController(title: "Error", message: "User not found", preferredStyle: .alert)
         let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(dismissAction)
         self.present(alert, animated: true, completion: nil)
+        self.activityIndicator.stopAnimating()
     }
     
     func setupUser(json: JSON)
@@ -75,8 +126,15 @@ class ProfileViewController: UIViewController {
         self.displayName.text = parent.user?.displayName
         self.location.text = parent.user?.location
         self.phoneNumber.text = parent.user?.phone
-        guard let lvl = parent.user?.level else { return }
-        self.level.text = String(format: "%.2f", lvl)
+        if let lvl = parent.user?.level
+        {
+            self.level.text = String(format: "%.2f", lvl)
+            let lvlDecimal = String(lvl).split(separator: ".")
+            if lvlDecimal.count == 2
+            {
+                self.levelProgress.progress = Float(lvlDecimal[1])! / 100
+            }
+        }
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "background_42")
@@ -90,10 +148,13 @@ class ProfileViewController: UIViewController {
     
     func recupImage(urlImage: String?)
     {
-        guard let urlStr = urlImage else { return }
+        guard var urlStr = urlImage else { return }
+        if urlStr == "https://cdn.intra.42.fr/images/default.png" {
+            urlStr = "https://cdn.intra.42.fr/users/medium_default.png"
+        }
         let session = URLSession(configuration: .default)
-        let url = URL(string: urlStr)
-        let task = session.dataTask(with: url!) { (data, response, error) in
+        guard let url = URL(string: urlStr) else { return }
+        let task = session.dataTask(with: url) { (data, response, error) in
             if let e = error { print("Image error : \(e)"); return }
             else if let _ = response {
                 if let d = data {

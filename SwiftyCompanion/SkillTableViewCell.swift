@@ -12,6 +12,8 @@ class SkillTableViewCell: UITableViewCell {
 
     @IBOutlet weak var skillLabel: UILabel!
     
+    @IBOutlet weak var percentLabel: UILabel!
+    
     @IBOutlet weak var skillProgress: UIProgressView!
     
     var skill: Skill?
@@ -21,7 +23,9 @@ class SkillTableViewCell: UITableViewCell {
             if let s = skill
             {
                 self.skillLabel.text = s.title
-                self.skillProgress.progress = s.level
+                self.percentLabel.text = String(format: "%.2f", s.level)
+                self.skillProgress.progress = s.level / 20
+                self.skillProgress.trackTintColor = .black
             }
         }
     }

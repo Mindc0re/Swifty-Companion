@@ -17,7 +17,7 @@ let ENCODED_BEARER = BEARER?.base64EncodedString(options: NSData.Base64EncodingO
 
 class APIController
 {
-    var accessToken: String?
+    var accessToken: String? = nil
     
     func getAccessToken(completionHandler: @escaping (Error?) -> Void)
     {
