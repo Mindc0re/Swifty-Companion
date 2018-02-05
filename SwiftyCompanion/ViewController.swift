@@ -29,6 +29,7 @@ class ViewController: UIViewController {
                     return
                 }
                 DispatchQueue.main.async {
+                    print(apiController.accessToken)
                     self.searchTextField.isEnabled = true
                 }
             }
